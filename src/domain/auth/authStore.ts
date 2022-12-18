@@ -1,5 +1,5 @@
 import {AxiosInstance} from "axios";
-import {happinessClient} from "../../utils/happinessClient";
+import happinessClient from "../../utils/happinessClient";
 
 export class AuthStore {
     client: AxiosInstance;

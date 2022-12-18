@@ -38,6 +38,7 @@ const LoginPage = () => {
             <div>{refreshToken}</div>
             <Button onClick={async () => {
                 const {accessToken, refreshToken} = await authStore.signup()
+                console.log('accessToken:' + accessToken)
                 // @ts-ignore
                 saveAccessToken(accessToken)
                 // @ts-ignore

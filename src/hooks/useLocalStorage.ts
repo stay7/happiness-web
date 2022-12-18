@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-const STORAGE_KEY_PREFIX = "happiness_"
+export const STORAGE_KEY_PREFIX = "happiness_"
 
 function useLocalStorage(key: string, initialState: string) {
     const storageKey = STORAGE_KEY_PREFIX + key
@@ -14,6 +14,8 @@ function useLocalStorage(key: string, initialState: string) {
     const setValue = (value: any) => {
         const valueToStore = value instanceof Function ? value(storedValue) : value;
         setStoredValue(valueToStore)
+        window.localStorage.setItem(storageKey, JSON.stringify(valueToStore));
+        console.log(`save ${storageKey}:${valueToStore}`)
     }
 
     return [storedValue, setValue];
