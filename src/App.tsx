@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LoginPage from "./page/loginPage";
 import HomePage from "./page/homePage";
+import RecordPage from "./page/recordPage";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/">
             <Route index element={<LoginPage />} />
             <Route path="/home" element={<HomePage />} />
+            <Route path="/record" element={<RecordPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
