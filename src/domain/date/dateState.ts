@@ -7,6 +7,6 @@ export const todayState = atom<dayjs.Dayjs>({
 })
 
 export const selectedDateState = atom<dayjs.Dayjs>({
-    key: "today",
+    key: "selectedDate",
     default: dayjs()
 })

@@ -9,15 +9,33 @@ export class AccountBookStore {
         this.client = client
     }
 
-    async all(): Promise<IAllData> {
-        const response = await this.client.get<IAllData>("/account_book/all")
+    async all(): Promise<IAccountBookAllResponse> {
+        const response = await this.client.get<IAccountBookAllResponse>("/account_book/all")
         console.log(response.data)
+        return response.data
+    }
+
+    async record(form: IRecordForm): Promise<IRecordResponse> {
+        const response = await this.client.post<IRecordResponse>("/record", form)
         return response.data
     }
 }
 
-interface IAllData {
+interface IAccountBookAllResponse {
     accountBooks: AccountBook[]
+}
+
+interface IRecordResponse {
+    status: number
+}
+
+export interface IRecordForm {
+    accountBookId: number,
+    amount: number,
+    spendAt: string,
+    description: string,
+    categoryId: number,
+    paymentId: number
 }
 
 // interface AccountBook {

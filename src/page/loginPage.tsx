@@ -6,6 +6,7 @@ import authStore from "../domain/auth/authStore";
 import useLocalStorage from "../hooks/useLocalStorage";
 import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
+import Layout from "../components/layout";
 
 const LoginPage = () => {
     const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState)
@@ -15,42 +16,47 @@ const LoginPage = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        if(storageAccessToken) {
+        if (storageAccessToken) {
             // @ts-ignore
             setAccessToken(storageAccessToken)
         }
 
-        if(storageRefreshToken) {
+        if (storageRefreshToken) {
             // @ts-ignore
             setRefreshToken(storageRefreshToken)
         }
 
-        if(accessToken && refreshToken) {
+        if (accessToken && refreshToken) {
             // navigate("/home")
         }
     }, [accessToken, refreshToken])
 
 
     return (
-        <div>login page
-            <div>this is login page</div>
-            <div>{accessToken}</div>
-            <div>{refreshToken}</div>
-            <Button onClick={async () => {
-                const {accessToken, refreshToken} = await authStore.signup()
-                console.log('accessToken:' + accessToken)
-                // @ts-ignore
-                saveAccessToken(accessToken)
-                // @ts-ignore
-                saveRefreshToken(refreshToken)
+        <>
+            <Layout>
+                <div>login page
+                    <div>this is login page</div>
+                    <div>{accessToken}</div>
+                    <div>{refreshToken}</div>
+                    <Button onClick={async () => {
+                        const {accessToken, refreshToken} = await authStore.signup()
+                        console.log('accessToken:' + accessToken)
+                        // @ts-ignore
+                        saveAccessToken(accessToken)
+                        // @ts-ignore
+                        saveRefreshToken(refreshToken)
 
-                setAccessToken(accessToken)
-                setRefreshToken(refreshToken)
-                navigate("/home")
-            }}>
-                signup
-            </Button>
-        </div>
+                        setAccessToken(accessToken)
+                        setRefreshToken(refreshToken)
+                        navigate("/home")
+                    }}>
+                        signup
+                    </Button>
+                </div>
+            </Layout>
+        </>
+
     )
 };
 
