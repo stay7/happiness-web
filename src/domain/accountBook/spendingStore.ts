@@ -12,7 +12,7 @@ export class SpendingStore {
 
     async all(accountBookId: number): Promise<IAllSpendingsResponse> {
         const data = {"accountBookId": accountBookId}
-        const response = await this.client.post<IAllSpendingsResponse>("/record/all", data)
+        const response = await this.client.post<IAllSpendingsResponse>("/spending/all", data)
         console.log(response)
         return response.data
     }

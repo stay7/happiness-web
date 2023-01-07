@@ -36,15 +36,13 @@ const HomePage = () => {
 
 
     return (
-        <div>
-            <Layout>
-                <HomeCalendar/>
-                <div>all</div>
-                {allSpendings.map(value => <div>{value.amount}</div>)}
-                <div>today {selectedDay.format("YYYYMMDD")}</div>
-                {records?.map(value => <div>{value.spendAt} {value.amount}</div>)}
-            </Layout>
-        </div>
+        <Layout>
+            <HomeCalendar/>
+            <div>all</div>
+            {allSpendings.map(value => <div>{value.amount}</div>)}
+            <div>today {selectedDay.format("YYYYMMDD")}</div>
+            {records?.map(value => <div>{value.spendAt} {value.amount}</div>)}
+        </Layout>
     )
 
     async function getAllAccountBooks() {

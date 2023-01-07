@@ -16,28 +16,29 @@ const RecordPage = () => {
     const [payment, setPayment] = useState<Payment>(accountBook?.payments[0]!)
     const [category, setCategory] = useState<Category>(accountBook?.categories[0]!)
 
+    const removeCommaRegex = /[^\d]+/g
+    const concatCommaRegex = /(\d)(?=(?:\d{3})+(?!\d))/g
+
     const onChangeAmount = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
         if (event.target.value == "0") {
             return
         }
-        const numberAmount = event.target.value.replaceAll(/[^\d]+/g, "")
-        const joinCommaAmount = numberAmount.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,")
+        const numberAmount = event.target.value.replaceAll(removeCommaRegex, "")
+        const joinCommaAmount = numberAmount.replace(concatCommaRegex, "$1,")
         setAmount(joinCommaAmount)
     }
 
     const onAddRecord = async () => {
         const data: IRecordForm = {
             accountBookId: accountBook!.id,
-            amount: parseInt(amount),
+            amount: parseInt(amount.replaceAll(removeCommaRegex, "")),
             categoryId: category.id,
             description: "",
             paymentId: payment.id,
             spendAt: selectedDate.format("YYYYMMDD")
         }
-        console.log(data)
         await accountBookStore.record(data)
     }
-    console.log('payment', payment)
 
     return (
         <>

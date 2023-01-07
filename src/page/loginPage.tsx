@@ -5,8 +5,9 @@ import {accessTokenState, refreshTokenState} from "../domain/auth/authState";
 import authStore from "../domain/auth/authStore";
 import useLocalStorage from "../hooks/useLocalStorage";
 import {useNavigate} from "react-router-dom";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import Layout from "../components/layout";
+import kakaoLoginButton from "../static/kakao_login_medium_narrow.png"
 
 const LoginPage = () => {
     const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState)
@@ -14,6 +15,10 @@ const LoginPage = () => {
     const [storageAccessToken, saveAccessToken] = useLocalStorage("accessToken", "")
     const [storageRefreshToken, saveRefreshToken] = useLocalStorage("refreshToken", "")
     const navigate = useNavigate()
+
+    const CLIENT_ID = "49337afa0c28846233d9674785019fab"
+    const REDIRECT_URI = "http://localhost:8080/oauth/kakao/code"
+    const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
     useEffect(() => {
         if (storageAccessToken) {
@@ -39,6 +44,9 @@ const LoginPage = () => {
                     <div>this is login page</div>
                     <div>{accessToken}</div>
                     <div>{refreshToken}</div>
+                    <a href={KAKAO_AUTH_URL}>
+                        <img src={kakaoLoginButton} alt="kakao login button"/>
+                    </a>
                     <Button onClick={async () => {
                         const {accessToken, refreshToken} = await authStore.signup()
                         console.log('accessToken:' + accessToken)

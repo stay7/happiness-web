@@ -5,7 +5,7 @@ const happinessClient = axios.create(
     {
         baseURL: "http://localhost:8080",
         headers: {
-            'Accept': "application/json",
+            'Accept': "application/json, text/html",
             'Content-Type': "application/json",
         }
     }

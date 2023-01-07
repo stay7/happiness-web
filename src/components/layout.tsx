@@ -1,22 +1,6 @@
 import React from "react";
-import {Container, Nav, Navbar} from "react-bootstrap";
-
-const Header = () => {
-    return (
-        <>
-            <Navbar bg="dark" variant="dark">
-                <Container>
-                    <Navbar.Brand />
-                    <Nav className="me-auto">
-                        <Nav.Link href="/home">home</Nav.Link>
-                        <Nav.Link href="/setting">setting</Nav.Link>
-                        <Nav.Link href="/feature">feature</Nav.Link>
-                    </Nav>
-                </Container>
-            </Navbar>
-        </>
-    )
-}
+import MenuBar from "./menuBar";
+import styled from "styled-components";
 
 type Props = {
     children: React.ReactNode
@@ -24,13 +8,19 @@ type Props = {
 
 const layout: React.FC<Props> = ({children}) => {
     return (
-        <>
-            <Header />
+        <Container>
+            <MenuBar/>
             <div>
                 {children}
             </div>
-        </>
+        </Container>
     )
 }
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+`
 
 export default layout
