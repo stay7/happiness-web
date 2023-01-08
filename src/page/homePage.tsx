@@ -1,17 +1,18 @@
 import * as React from "react";
 import {useEffect, useState} from "react";
-import 'react-calendar/dist/Calendar.css';
 import Layout from "../components/layout";
 import {accountBookStore} from "../domain/accountBook/accountBookStore";
 import {useRecoilState, useRecoilValue} from "recoil";
 import {AccountBook} from "../domain/accountBook/accountBook";
 import {accountBooksState, selectedAccountBookState} from "../domain/accountBook/accountBookState";
-import HomeCalendar from "../components/homeCalendar";
 import {spendingStore} from "../domain/accountBook/spendingStore";
 import {Spending} from "../domain/accountBook/spending";
 import {allSpendingState, daySpendingState} from "../domain/accountBook/allSpendingState";
-import {selectedDateState} from "../domain/date/dateState";
 import dayjs from "dayjs";
+import {LeftSection} from "../components/leftSection";
+import {CenterSection} from "../components/centerSection";
+import {RightSection} from "../components/rightSection";
+import {selectedDateState} from "../domain/calendar/calendarState";
 
 const HomePage = () => {
     const [accountBooks, setAccountBooks] = useRecoilState<AccountBook[]>(accountBooksState)
@@ -37,11 +38,14 @@ const HomePage = () => {
 
     return (
         <Layout>
-            <HomeCalendar/>
-            <div>all</div>
-            {allSpendings.map(value => <div>{value.amount}</div>)}
-            <div>today {selectedDay.format("YYYYMMDD")}</div>
-            {records?.map(value => <div>{value.spendAt} {value.amount}</div>)}
+            <LeftSection/>
+            <CenterSection/>
+            <RightSection/>
+
+            {/*<div>all</div>*/}
+            {/*{allSpendings.map(value => <div>{value.amount}</div>)}*/}
+            {/*<div>today {selectedDay.format("YYYYMMDD")}</div>*/}
+            {/*{records?.map(value => <div>{value.spendAt} {value.amount}</div>)}*/}
         </Layout>
     )
 

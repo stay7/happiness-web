@@ -10,17 +10,22 @@ const layout: React.FC<Props> = ({children}) => {
     return (
         <Container>
             <MenuBar/>
-            <div>
+            <SectionBox>
                 {children}
-            </div>
+            </SectionBox>
         </Container>
     )
 }
 
 const Container = styled.div`
+  height: 100vh;
+`
+
+const SectionBox = styled.div`
   display: flex;
   flex-direction: row;
-  height: 100vh;
+  background-color: black;
+  min-height: calc(100vh - 54px);
 `
 
 export default layout

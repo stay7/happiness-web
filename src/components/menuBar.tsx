@@ -8,31 +8,23 @@ import styled from "styled-components";
 export function MenuBar() {
     return (
         <Container>
-            <MenuBox>
-                <Nav href="/home"><FiHome size={24}/></Nav>
-                <Nav href="/record"><CiCalendarDate size={24}/></Nav>
-                <Nav href="/stat"><BiStats size={24}/></Nav>
-                <Nav href="/setting"><IoSettingsOutline size={24}/></Nav>
-            </MenuBox>
+            <div>🔴</div>
+            <div style={{fontSize: 20}}>YEEESAN</div>
         </Container>
     );
 }
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 66px;
-  height: 100%;
-  margin-top: auto;
-  margin-bottom: auto;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 54px;
+  padding: 0 28px;
+  background-color: #FBF7F4;
 `
 
 const MenuBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
   height: 240px;
 `
 
