@@ -7,7 +7,7 @@ import {AccountBook} from "../domain/accountBook/accountBook";
 import {accountBooksState, selectedAccountBookState} from "../domain/accountBook/accountBookState";
 import {spendingStore} from "../domain/accountBook/spendingStore";
 import {Spending} from "../domain/accountBook/spending";
-import {allSpendingState, daySpendingState} from "../domain/accountBook/allSpendingState";
+import {allSpendingState} from "../domain/accountBook/allSpendingState";
 import dayjs from "dayjs";
 import {LeftSection} from "../components/leftSection";
 import {CenterSection} from "../components/centerSection";
