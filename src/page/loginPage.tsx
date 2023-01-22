@@ -5,7 +5,7 @@ import {accessTokenState, refreshTokenState} from "../domain/auth/authState";
 import authStore from "../domain/auth/authStore";
 import useLocalStorage from "../hooks/useLocalStorage";
 import {useNavigate} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import Layout from "../components/layout";
 import kakaoLoginButton from "../static/kakao_login_medium_narrow.png"
 
@@ -49,7 +49,6 @@ const LoginPage = () => {
                     </a>
                     <Button onClick={async () => {
                         const {accessToken, refreshToken} = await authStore.signup()
-                        console.log('accessToken:' + accessToken)
                         // @ts-ignore
                         saveAccessToken(accessToken)
                         // @ts-ignore

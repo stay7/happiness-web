@@ -11,7 +11,7 @@ export class AccountBookStore {
 
     async all(): Promise<IAccountBookAllResponse> {
         const response = await this.client.get<IAccountBookAllResponse>("/account_book/all")
-        console.log(response.data)
+        console.log('get all account book', response.data)
         return response.data
     }
 
