@@ -6,7 +6,7 @@ import {Button, TextField} from "@mui/material";
 import {selectedAccountBookState} from "../domain/accountBook/accountBookState";
 import {Payment} from "../domain/accountBook/payment";
 import {Category} from "../domain/accountBook/category";
-import {accountBookStore, IRecordForm} from "../domain/accountBook/accountBookStore";
+import {accountBookStore, IRecordForm} from "../store/accountBookStore";
 import {selectedDateState} from "../domain/calendar/calendarState";
 
 const RecordPage = () => {

@@ -1,6 +1,6 @@
 import {AxiosInstance} from "axios";
-import happinessClient from "../../utils/happinessClient";
-import {Spending} from "./spending";
+import happinessClient from "../utils/happinessClient";
+import {Spending} from "../domain/accountBook/spending";
 
 export class SpendingStore {
     client: AxiosInstance;

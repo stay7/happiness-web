@@ -1,6 +1,6 @@
 import {AxiosInstance} from "axios";
-import happinessClient from "../../utils/happinessClient";
-import {AccountBook} from "./accountBook";
+import happinessClient from "../utils/happinessClient";
+import {AccountBook} from "../domain/accountBook/accountBook";
 
 export class AccountBookStore {
     client: AxiosInstance;
