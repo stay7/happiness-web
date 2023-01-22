@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Button} from "@mui/material";
 import {useRecoilState} from "recoil";
-import {accessTokenState, refreshTokenState} from "../domain/auth/authState";
+import {accessTokenState, refreshTokenState} from "../state/authState";
 import authStore from "../store/authStore";
 import useLocalStorage from "../hooks/useLocalStorage";
 import {useNavigate} from "react-router-dom";

@@ -2,7 +2,7 @@ import {useState} from 'react'
 import React from "react";
 import styled from "styled-components";
 import {useRecoilState, useRecoilValue} from "recoil";
-import {selectedDateState} from "../domain/calendar/calendarState";
+import {selectedDateState} from "../state/calendarState";
 import {formAmountNumberState, formAmountStringState} from "../domain/uiState";
 import {AmountForamtter} from "../utils/amountForamtter";
 import {InputAdornment, OutlinedInput, TextField} from "@mui/material";

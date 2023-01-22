@@ -4,15 +4,15 @@ import Layout from "../components/layout";
 import {accountBookStore} from "../store/accountBookStore";
 import {useRecoilState, useRecoilValue} from "recoil";
 import {AccountBook} from "../domain/accountBook/accountBook";
-import {accountBooksState, selectedAccountBookState} from "../domain/accountBook/accountBookState";
+import {accountBooksState, selectedAccountBookState} from "../state/accountBookState";
 import {spendingStore} from "../store/spendingStore";
 import {Spending} from "../domain/accountBook/spending";
-import {allSpendingState} from "../domain/accountBook/allSpendingState";
+import {allSpendingState} from "../state/allSpendingState";
 import dayjs from "dayjs";
 import {LeftSection} from "../components/leftSection";
 import {CenterSection} from "../components/centerSection";
 import {RightSection} from "../components/rightSection";
-import {selectedDateState} from "../domain/calendar/calendarState";
+import {selectedDateState} from "../state/calendarState";
 
 const HomePage = () => {
     const [accountBooks, setAccountBooks] = useRecoilState<AccountBook[]>(accountBooksState)

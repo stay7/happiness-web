@@ -1,14 +1,14 @@
 import React from "react";
 import {useRecoilState, useRecoilValue} from "recoil";
-import {selectedAccountBookState} from "../domain/accountBook/accountBookState";
+import {selectedAccountBookState} from "../state/accountBookState";
 import {Calendar, OnChangeDateCallback} from "react-calendar";
 import {Button} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 import dayjs from "dayjs";
 import '../main-calendar.css'
-import {selectedDateState} from "../domain/calendar/calendarState";
+import {selectedDateState} from "../state/calendarState";
 import {CalendarTile} from "./calendarTile";
-import {allSpendingState} from "../domain/accountBook/allSpendingState";
+import {allSpendingState} from "../state/allSpendingState";
 
 type Props = {}
 

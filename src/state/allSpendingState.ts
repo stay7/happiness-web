@@ -1,6 +1,6 @@
 import {atom, selector} from "recoil";
-import {Spending} from "./spending";
-import {selectedDateState} from "../calendar/calendarState";
+import {Spending} from "../domain/accountBook/spending";
+import {selectedDateState} from "./calendarState";
 
 export const allSpendingState = atom<Spending[]>({
     key: "all-spending-state",

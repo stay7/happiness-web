@@ -1,6 +1,6 @@
 import {atom, selector} from "recoil";
 import dayjs from "dayjs";
-import {resetDaySettingState} from "../settings/settingsState";
+import {resetDaySettingState} from "./settingsState";
 
 export const todayState = atom<dayjs.Dayjs>({
     key: "today-state",

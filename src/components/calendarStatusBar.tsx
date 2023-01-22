@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import styled from "styled-components";
 import {useRecoilValue} from "recoil";
-import {resetDaySettingState} from "../domain/settings/settingsState";
-import {resetDayCountState, todayState} from "../domain/calendar/calendarState";
+import {resetDaySettingState} from "../state/settingsState";
+import {resetDayCountState, todayState} from "../state/calendarState";
 
 export const CalendarStatusBar = () => {
     const today = useRecoilValue(todayState)
