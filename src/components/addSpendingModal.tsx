@@ -22,7 +22,7 @@ export const AddSpendingModal = () => {
                     position: 'absolute',
                     top: 0,
                     right: 10,
-                    width: 270,
+                    width: 350,
                     height: 444,
                     border: '1px solid #ccc',
                     background: '#fff',

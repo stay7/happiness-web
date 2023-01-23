@@ -6,7 +6,6 @@ import {Button, TextField} from "@mui/material";
 import {selectedAccountBookState} from "../state/accountBookState";
 import {Payment} from "../domain/accountBook/payment";
 import {Category} from "../domain/accountBook/category";
-import {accountBookStore, IRecordForm} from "../store/accountBookStore";
 import {selectedDateState} from "../state/calendarState";
 
 const RecordPage = () => {
@@ -26,18 +25,6 @@ const RecordPage = () => {
         const numberAmount = event.target.value.replaceAll(removeCommaRegex, "")
         const joinCommaAmount = numberAmount.replace(concatCommaRegex, "$1,")
         setAmount(joinCommaAmount)
-    }
-
-    const onAddRecord = async () => {
-        const data: IRecordForm = {
-            accountBookId: accountBook!.id,
-            amount: parseInt(amount.replaceAll(removeCommaRegex, "")),
-            categoryId: category.id,
-            description: "",
-            paymentId: payment.id,
-            spendAt: selectedDate.format("YYYYMMDD")
-        }
-        await accountBookStore.record(data)
     }
 
     return (
@@ -69,7 +56,7 @@ const RecordPage = () => {
                             <div>{c.name}</div>
                         </div>)}
                     </div>
-                    <button onClick={onAddRecord}>등록</button>
+                    {/*<button onClick={onAddRecord}>등록</button>*/}
                 </div>
             </Layout>
         </>

@@ -14,28 +14,10 @@ export class AccountBookStore {
         console.log('get all account book', response.data)
         return response.data
     }
-
-    async record(form: IRecordForm): Promise<IRecordResponse> {
-        const response = await this.client.post<IRecordResponse>("/record", form)
-        return response.data
-    }
 }
 
 interface IAccountBookAllResponse {
     accountBooks: AccountBook[]
-}
-
-interface IRecordResponse {
-    status: number
-}
-
-export interface IRecordForm {
-    accountBookId: number,
-    amount: number,
-    spendAt: string,
-    description: string,
-    categoryId: number,
-    paymentId: number
 }
 
 // interface AccountBook {

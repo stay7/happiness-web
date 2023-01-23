@@ -17,6 +17,23 @@ export class SpendingStore {
         return response.data
     }
 
+    async record(form: IRecordForm): Promise<IRecordResponse> {
+        const response = await this.client.post<IRecordResponse>("/record", form)
+        return response.data
+    }
+}
+
+export interface IRecordForm {
+    accountBookId: number,
+    amount: number,
+    spendAt: string,
+    description: string | null,
+    categoryId: number,
+    paymentId: number
+}
+
+interface IRecordResponse {
+    status: number
 }
 
 interface IAllSpendingsResponse {
