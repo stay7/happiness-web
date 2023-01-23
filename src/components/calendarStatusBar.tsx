@@ -1,16 +1,15 @@
-import React, {useState} from 'react'
+import React from 'react'
 import styled from "styled-components";
 import {useRecoilValue} from "recoil";
-import {resetDaySettingState} from "../state/settingsState";
-import {resetDayCountState, todayState} from "../state/calendarState";
+import {resetDayCountState, selectedDateState} from "../state/calendarState";
 
 export const CalendarStatusBar = () => {
-    const today = useRecoilValue(todayState)
+    const selectedDay = useRecoilValue(selectedDateState)
     const remainDays = useRecoilValue(resetDayCountState)
 
     return (
         <Container>
-            <div>{today.format('MMMM')}</div>
+            <div>{selectedDay.format('MMMM')}</div>
             <div>예산 리셋일까지 {remainDays}일 남았어요</div>
         </Container>
     )

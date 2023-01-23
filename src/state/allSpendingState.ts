@@ -34,3 +34,10 @@ export const selectedDaySpendingState = selector<Spending[]>({
     }
 })
 
+export const thisMonthSpendings = selector<Spending[]>({
+    key: "this-month-spendings",
+    get: ({get}) => {
+        const selectedMonth = get(selectedDateState).format('YYYYMM')
+        return get(allSpendingState).filter(value => value.spendAt.substring(0, 6) == selectedMonth)
+    }
+})
