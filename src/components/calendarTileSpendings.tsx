@@ -8,7 +8,7 @@ interface ISpendingRowProps {
 }
 
 // category를 받아서 그 색을 넣어줘야함
-export const SpendingRow = ({spending}: ISpendingRowProps) => {
+export const CalendarTileSpendings = ({spending}: ISpendingRowProps) => {
     const amountFormatter = AmountForamtter.getInstance()
 
     return (

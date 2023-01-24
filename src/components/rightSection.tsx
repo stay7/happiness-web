@@ -1,10 +1,13 @@
 import React from 'react';
 import styled from "styled-components";
+import {SpendingList} from "./spendingList";
 
 export const RightSection = () => {
 
     return (
-        <Container></Container>
+        <Container>
+            <SpendingList />
+        </Container>
     )
 }
 

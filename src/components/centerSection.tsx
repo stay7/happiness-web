@@ -5,10 +5,10 @@ import {CalendarStatusBar} from "./calendarStatusBar";
 import {AddSpendingModal} from "./addSpendingModal";
 import {SummaryThisMonthBar} from "./summaryThisMonthBar";
 import {useRecoilValue} from "recoil";
-import {thisMonthSpendings} from "../state/allSpendingState";
+import {thisMonthSpendingsState} from "../state/spendingState";
 
 export const CenterSection = () => {
-    const thisMonthSpending = useRecoilValue(thisMonthSpendings)
+    const thisMonthSpending = useRecoilValue(thisMonthSpendingsState)
 
     return (
         <Container>

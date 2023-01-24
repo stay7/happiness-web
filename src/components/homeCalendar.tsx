@@ -8,7 +8,7 @@ import dayjs from "dayjs";
 import '../main-calendar.css'
 import {selectedDateState} from "../state/calendarState";
 import {CalendarTile} from "./calendarTile";
-import {allSpendingState} from "../state/allSpendingState";
+import {allSpendingState} from "../state/spendingState";
 
 type Props = {}
 

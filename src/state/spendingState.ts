@@ -24,7 +24,7 @@ export const spendingByDayState = selector<Map<string, Spending[]>>({
     }
 })
 
-export const selectedDaySpendingState = selector<Spending[]>({
+export const selectedDaySpendingsState = selector<Spending[]>({
     key: "selected-day-spending-state",
     get: ({get}) => {
         const selectedDayString = get(selectedDateState).format('YYYYMMDD')
@@ -34,10 +34,27 @@ export const selectedDaySpendingState = selector<Spending[]>({
     }
 })
 
-export const thisMonthSpendings = selector<Spending[]>({
-    key: "this-month-spendings",
+export const thisMonthSpendingsState = selector<Spending[]>({
+    key: "this-month-spendings-state",
     get: ({get}) => {
         const selectedMonth = get(selectedDateState).format('YYYYMM')
         return get(allSpendingState).filter(value => value.spendAt.substring(0, 6) == selectedMonth)
+    }
+})
+
+export const thisMonthSpendingsByDayState = selector<Map<string, Spending[]>>({
+    key: "this-month-spendings-by-day-state",
+    get: ({get}) => {
+        const map = new Map<string, Spending[]>()
+        get(thisMonthSpendingsState).forEach((value) => {
+            const key = value.spendAt
+            if (map.get(key)) {
+                // @ts-ignore
+                map.get(key).push(value)
+            } else {
+                map.set(key, [value])
+            }
+        })
+        return map
     }
 })
