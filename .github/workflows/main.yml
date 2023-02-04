@@ -9,6 +9,9 @@ jobs:
   # To build the project
   build-hamoney:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - name: Checking out code
         uses: actions/checkout@v3
