@@ -24,7 +24,6 @@ const Container = styled.div`
 const SectionBox = styled.div`
   display: flex;
   flex-direction: row;
-  background-color: black;
   min-height: calc(100vh - 54px);
 `
 

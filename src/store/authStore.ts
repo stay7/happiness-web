@@ -18,21 +18,27 @@ export class AuthStore {
         }
     }
 
-    async signup(): Promise<ISignupData> {
+    async signup(form: ISignupForm): Promise<ISignupData> {
         const data = {
-            "providerId": "1235",
-            "email": "sangmin95@gmail.com",
-            "emailVerified": false,
-            "deviceUuid": "1234",
-            "lang": "ko"
+            "nickname": form.nickname,
+            "email": form.email,
+            "lang": form.lang,
+            "socialProvider": form.socialProvider
         }
         try {
-            const response = await this.client.post<ISignupData>("/oauth/signup/kakao", JSON.stringify(data))
+            const response = await this.client.post<ISignupData>("/oauth/signup", JSON.stringify(data))
             return response.data
         } catch (e) {
             throw e
         }
     }
+}
+
+interface ISignupForm {
+    nickname: string,
+    email: string,
+    lang: string,
+    socialProvider: string
 }
 
 interface ISignupData {

@@ -32,19 +32,20 @@ export const AddSpendingForm = () => {
             </Row>
             <Row>
                 <Label>금액</Label>
-                <OutlinedInput
-                    id="filled-adornment-amount"
+
+            </Row>
+            <FormRow title="금액" selected={true}>
+                <Input
                     type="text"
                     value={amountString}
-                    startAdornment={<InputAdornment position="start">₩</InputAdornment>}
-                    endAdornment={<InputAdornment position="end">원</InputAdornment>}
                     onChange={(e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
                         const filtered = e.target.value.replaceAll(onlyNumberRegex, "")
                         if (filtered == "") return setAmount(undefined)
                         setAmount(amountFormatter.stringToNumber(filtered))
                     }}
                 />
-            </Row>
+                원
+            </FormRow>
             <Row>
                 <Label>수단</Label>
                 <Select
@@ -108,11 +109,49 @@ export const AddSpendingForm = () => {
     )
 }
 
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
+interface IFormRowProps {
+    selected?: boolean,
+    title: string,
+    children: React.ReactNode
+}
+
+export const FormRow: React.FC<IFormRowProps> = ({selected, title, children}) => {
+    return (
+        <Container>
+            <Row selected={selected}>
+                <Label selected={selected}>{title}</Label>
+                {children}
+            </Row>
+        </Container>
+    )
+}
+
+interface SelectProps {
+    selected?: boolean
+}
+
+interface RowProps {
+    title: string
+}
+
+const Container = styled.div<SelectProps>`
+
 `
 
-const Label = styled.span`
+const Row = styled.div<SelectProps>`
+  display: flex;
+  flex-direction: row;
+  width: 267px;
+  ${props => props.selected && 'border: 1px solid black'}
+`
+
+const Input = styled.input`
+  border: 0;
+  &:focus {
+    outline: none;
+  }
+`
+
+const Label = styled.span<SelectProps>`
   padding: 0 9px;
 `

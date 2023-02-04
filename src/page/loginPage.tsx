@@ -48,7 +48,7 @@ const LoginPage = () => {
                         <img src={kakaoLoginButton} alt="kakao login button"/>
                     </a>
                     <Button onClick={async () => {
-                        const {accessToken, refreshToken} = await authStore.signup()
+                        // const {accessToken, refreshToken} = await authStore.signup()
                         // @ts-ignore
                         saveAccessToken(accessToken)
                         // @ts-ignore
