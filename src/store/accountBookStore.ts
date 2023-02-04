@@ -1,6 +1,9 @@
-import {AxiosInstance} from "axios";
+import {AxiosInstance, HttpStatusCode} from "axios";
 import happinessClient from "../utils/happinessClient";
 import {AccountBook} from "../domain/accountBook/accountBook";
+import {HTTP_STATUS_CODE} from "../constants/httpStatusCode";
+import {HappinessResponse} from "../utils/CommonTypes";
+import {HAPPINESS_STATUS_CODE} from "../constants/HAPPINESS_STATUS_CODE";
 
 export class AccountBookStore {
     client: AxiosInstance;
@@ -11,12 +14,16 @@ export class AccountBookStore {
 
     async all(): Promise<IAccountBookAllResponse> {
         const response = await this.client.get<IAccountBookAllResponse>("/account_book/all")
-        console.log('get all account book', response.data)
+        if (response.status != HTTP_STATUS_CODE.OK || response.data.status != HAPPINESS_STATUS_CODE.OK) {
+            alert(response.data.toString())
+        }
+        console.log('get all account book', response)
         return response.data
     }
 }
 
-interface IAccountBookAllResponse {
+
+interface IAccountBookAllResponse extends HappinessResponse {
     accountBooks: AccountBook[]
 }
 
