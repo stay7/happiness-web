@@ -26,7 +26,11 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           role-to-assume: arn:aws:iam::055149133396:role/github_action_role
-          aws-region: ${{ secrets.AWS_REGION }}
+          aws-region: ap-northeast-2
 
       - name: Deploy to S3 bucket
-        run: aws s3 sync ./dist/ s3://hamoney --delete
+        run: |
+          aws s3 cp \
+            --recursive \
+            --region ap-northeast-2 \
+            build s3://hamoney
