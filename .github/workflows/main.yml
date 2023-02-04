@@ -19,6 +19,8 @@ jobs:
       - name: install
         run: npm install
       - name: build
+        env:
+          CI: "" # 이거 없으면 warning도 error로 처리됨
         run: npm run build
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
