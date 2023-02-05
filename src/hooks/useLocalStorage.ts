@@ -7,14 +7,14 @@ function useLocalStorage(key: string, initialState: string) {
     const [storedValue, setStoredValue] = useState<string>(
         () => {
             const item = window.localStorage.getItem(storageKey)
-            return item ? JSON.parse(item) : initialState
+            return item ? item : initialState
         }
     );
 
     const setValue = (value: any) => {
         const valueToStore = value instanceof Function ? value(storedValue) : value;
         setStoredValue(valueToStore)
-        window.localStorage.setItem(storageKey, JSON.stringify(valueToStore));
+        window.localStorage.setItem(storageKey, valueToStore);
         console.log(`save ${storageKey}:${valueToStore}`)
     }
 
