@@ -8,6 +8,7 @@ import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
 import Layout from "../components/layout";
 import kakaoLoginButton from "../static/kakao_login_medium_narrow.png"
+import naverLoginButton from "../static/naver_login.png"
 
 const InitPage = () => {
     const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState)
@@ -16,9 +17,8 @@ const InitPage = () => {
     const [storageRefreshToken, saveRefreshToken] = useLocalStorage("refreshToken", "")
     const navigate = useNavigate()
 
-    const CLIENT_ID = "49337afa0c28846233d9674785019fab"
-    const REDIRECT_URI = "http://localhost:8080/oauth/kakao/code"
-    const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+    const KAKAO_AUTH_URL = process.env["REACT_APP_KAKAO_AUTH_URL"]
+    const NAVER_AUTH_URL = process.env["REACT_APP_NAVER_AUTH_URL"]
 
     useEffect(() => {
         if (storageAccessToken) {
@@ -36,7 +36,6 @@ const InitPage = () => {
         }
     }, [accessToken, refreshToken])
 
-
     return (
         <>
             <Layout>
@@ -47,6 +46,11 @@ const InitPage = () => {
                     <a href={KAKAO_AUTH_URL}>
                         <img src={kakaoLoginButton} alt="kakao login button"/>
                     </a>
+
+                    <a href={NAVER_AUTH_URL}>
+                        <img src={naverLoginButton} alt="naver login button"/>
+                    </a>
+
                     <Button onClick={async () => {
                         // const {accessToken, refreshToken} = await authStore.signup()
                         // @ts-ignore

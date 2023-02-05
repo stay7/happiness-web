@@ -11,7 +11,7 @@ const happinessClient = axios.create(
         headers: {
             'Accept': "application/json, text/html",
             'Content-Type': "application/json",
-            'Authorization': `${JSON.parse(localStorage.getItem(STORAGE_KEY_PREFIX + 'accessToken')!)}`,
+            'Authorization': `${localStorage.getItem(STORAGE_KEY_PREFIX + 'accessToken')!}`,
         }
     }
 )
@@ -34,7 +34,7 @@ happinessClient.interceptors.response.use(
     (response) => response,
     async (error) => {
         if (error && error.response.status == HTTP_STATUS_CODE.UNAUTHORIZED && error.response.data.status == HAPPINESS_STATUS_CODE.UNAUTHORIZED) {
-            const storageRefreshToken = JSON.parse(localStorage.getItem(STORAGE_KEY_PREFIX + "refreshToken")!)
+            const storageRefreshToken = localStorage.getItem(STORAGE_KEY_PREFIX + "refreshToken")
             if (storageRefreshToken) {
                 const response = await pureClient.post<IRefreshResponse>(`${baseUrl}/oauth/refresh`, {
                     "refreshToken": storageRefreshToken
