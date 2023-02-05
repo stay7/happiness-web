@@ -1,9 +1,9 @@
-import axios, {HttpStatusCode} from "axios";
+import axios from "axios";
 import {STORAGE_KEY_PREFIX} from "../hooks/useLocalStorage";
 import {HAPPINESS_STATUS_CODE} from "../constants/HAPPINESS_STATUS_CODE";
 import {HTTP_STATUS_CODE} from "../constants/httpStatusCode";
 
-const baseUrl = "http://localhost:8080"
+const baseUrl = process.env["REACT_APP_BASE_URL"]
 
 const happinessClient = axios.create(
     {
