@@ -35,8 +35,11 @@ interface StyleProp {
 const Container = styled.div<StyleProp>`
   display: flex;
   flex-direction: row;
-  width: 180px;
-  height: 32px;
+  align-items: center;
+  padding: 0 10px;
+  margin: 2px 0;
+  width: 95%;
+  height: 3%;
   border-radius: 12px;
   background-color: #ffffff;
   ${(props) => props.selected && "opacity: 0.8"}
