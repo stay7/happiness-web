@@ -2,6 +2,8 @@ import {atom, selector} from "recoil";
 
 const nf = new Intl.NumberFormat()
 
+export const TAB_NAME = ["CALENDAR", "CATEGORY"] as const
+
 export const openRecordModalState = atom<boolean>({
     key: 'open-record-modal-state',
     default: false
@@ -21,3 +23,7 @@ export const formAmountStringState = selector<string>({
     }
 })
 
+export const selectedTabIndexState = atom<number>({
+    key: 'selected-tab-index-state',
+    default: 0
+})
