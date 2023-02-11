@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 interface ITextButtonProp {
     content: string,
-    onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
+    onClick?: MouseEventHandler<HTMLButtonElement>
 }
 
 export const TextButton = ({content, onClick}: ITextButtonProp) => {

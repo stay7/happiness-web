@@ -1,7 +1,7 @@
 import Modal from "react-modal";
 import React from "react";
 import {useRecoilState} from "recoil";
-import {openRecordModalState} from "../domain/uiState";
+import {openRecordModalState} from "../state/uiState";
 import {AddSpendingForm} from "./addSpendingForm";
 
 export const AddSpendingModal = () => {
