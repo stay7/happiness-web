@@ -1,3 +1,1 @@
-export const SignupForm = () => {
-
-}
+export const SignupForm = () => {};

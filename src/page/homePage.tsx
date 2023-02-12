@@ -4,10 +4,7 @@ import Layout from "../components/layout";
 import { accountBookStore } from "../store/accountBookStore";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { AccountBook } from "../domain/accountBook/accountBook";
-import {
-  accountBooksState,
-  selectedAccountBookState,
-} from "../state/accountBookState";
+import { accountBooksState, selectedAccountBookState } from "../state/accountBookState";
 import { spendingStore } from "../store/spendingStore";
 import { Spending } from "../domain/accountBook/spending";
 import { allSpendingState } from "../state/spendingState";
@@ -20,13 +17,10 @@ import { CategoryTab } from "../components/tabs/categoryTab";
 import { selectedTabIndexState } from "../state/uiState";
 
 const HomePage = () => {
-  const [accountBooks, setAccountBooks] =
-    useRecoilState<AccountBook[]>(accountBooksState);
-  const [selectedAccountBook, setSelectedAccountBook] =
-    useRecoilState<AccountBook | null>(selectedAccountBookState);
+  const [accountBooks, setAccountBooks] = useRecoilState<AccountBook[]>(accountBooksState);
+  const [selectedAccountBook, setSelectedAccountBook] = useRecoilState<AccountBook | null>(selectedAccountBookState);
   // @ts-ignore
-  const [allSpendings, setAllSpendings] =
-    useRecoilState<Spending[]>(allSpendingState);
+  const [allSpendings, setAllSpendings] = useRecoilState<Spending[]>(allSpendingState);
   const selectedDay = useRecoilValue<dayjs.Dayjs>(selectedDateState);
   const [records, setRecords] = useState<Spending[]>();
   const selectedTabIndex = useRecoilValue(selectedTabIndexState);
@@ -73,9 +67,7 @@ const HomePage = () => {
   }
 
   async function filterDaySpending() {
-    const todaySpendings = allSpendings.filter(
-      (value) => value.spendAt == selectedDay.format("YYYYMMDD")
-    );
+    const todaySpendings = allSpendings.filter((value) => value.spendAt == selectedDay.format("YYYYMMDD"));
     console.log({ todaySpendings });
     setRecords(todaySpendings);
   }

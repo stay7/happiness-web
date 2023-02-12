@@ -1,3 +1,1 @@
-export class Income {
-    
-}
+export class Income {}
