@@ -8,11 +8,7 @@ import styled from "styled-components";
 
 interface CalendarTileProp extends CalendarTileProperties {}
 
-export const CalendarTile = ({
-  activeStartDate,
-  view,
-  date,
-}: CalendarTileProp) => {
+export const CalendarTile = ({ activeStartDate, view, date }: CalendarTileProp) => {
   const dateSpending = useRecoilValue(spendingByDayState);
   const tileDay = dayjs(date);
   return (

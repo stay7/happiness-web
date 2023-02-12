@@ -1,8 +1,9 @@
 import Modal from "react-modal";
 import React from "react";
 import { useRecoilState } from "recoil";
-import { openRecordModalState } from "../state/uiState";
+import { openRecordModalState } from "../../state/uiState";
 import { AddSpendingForm } from "./addSpendingForm";
+import styled from "styled-components";
 
 export const AddSpendingModal = () => {
   const [modalIsOpen, setIsOpen] = useRecoilState(openRecordModalState);
@@ -37,7 +38,13 @@ export const AddSpendingModal = () => {
       onRequestClose={() => setIsOpen(false)}
       contentLabel="Example Modal"
     >
+      <Title>지출 입력</Title>
       <AddSpendingForm />
     </Modal>
   );
 };
+
+const Title = styled.div`
+  font-size: 20px;
+  font-weight: 700;
+`;

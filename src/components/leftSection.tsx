@@ -22,11 +22,7 @@ export const LeftSection = () => {
       </LeftSectionComponent>
 
       <LeftSectionComponent>
-        <DatePicker
-          selected={selectedDate.toDate()}
-          onChange={(date) => setSelectedDate(dayjs(date))}
-          inline
-        />
+        <DatePicker selected={selectedDate.toDate()} onChange={(date) => setSelectedDate(dayjs(date))} inline />
       </LeftSectionComponent>
     </Container>
   );

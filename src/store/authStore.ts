@@ -26,10 +26,7 @@ export class AuthStore {
       socialProvider: form.socialProvider,
     };
     try {
-      const response = await this.client.post<ISignupData>(
-        "/oauth/signup",
-        JSON.stringify(data)
-      );
+      const response = await this.client.post<ISignupData>("/oauth/signup", JSON.stringify(data));
       return response.data;
     } catch (e) {
       throw e;

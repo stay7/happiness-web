@@ -9,23 +9,16 @@ import { Category } from "../domain/accountBook/category";
 import { selectedDateState } from "../state/calendarState";
 
 const RecordPage = () => {
-  const [selectedDate, setSelectedDate] =
-    useRecoilState<dayjs.Dayjs>(selectedDateState);
-  const [accountBook, setAccountBook] = useRecoilState(
-    selectedAccountBookState
-  );
+  const [selectedDate, setSelectedDate] = useRecoilState<dayjs.Dayjs>(selectedDateState);
+  const [accountBook, setAccountBook] = useRecoilState(selectedAccountBookState);
   const [amount, setAmount] = useState<string>("");
   const [payment, setPayment] = useState<Payment>(accountBook?.payments[0]!);
-  const [category, setCategory] = useState<Category>(
-    accountBook?.categories[0]!
-  );
+  const [category, setCategory] = useState<Category>(accountBook?.categories[0]!);
 
   const removeCommaRegex = /[^\d]+/g;
   const concatCommaRegex = /(\d)(?=(?:\d{3})+(?!\d))/g;
 
-  const onChangeAmount = (
-    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-  ) => {
+  const onChangeAmount = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     if (event.target.value == "0") {
       return;
     }
@@ -40,12 +33,7 @@ const RecordPage = () => {
         <div>{`selected: ${selectedDate.toDate()}`}</div>
         <div>
           <div>
-            <TextField
-              label="금액"
-              type="text"
-              onChange={onChangeAmount}
-              value={amount}
-            />
+            <TextField label="금액" type="text" onChange={onChangeAmount} value={amount} />
           </div>
           <div>
             <>지불 수단</>
@@ -55,12 +43,7 @@ const RecordPage = () => {
           </div>
           <div>{/*{payment.isCard && "일시불"}*/}</div>
           <div>
-            <TextField
-              label="카드/현금"
-              type="text"
-              value={payment.name}
-              disabled={true}
-            />
+            <TextField label="카드/현금" type="text" value={payment.name} disabled={true} />
           </div>
           <>카테고리</>
           <div>

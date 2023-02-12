@@ -13,13 +13,8 @@ export class AccountBookStore {
   }
 
   async all(): Promise<IAccountBookAllResponse> {
-    const response = await this.client.get<IAccountBookAllResponse>(
-      "/account_book/all"
-    );
-    if (
-      response.status != HTTP_STATUS_CODE.OK ||
-      response.data.status != HAPPINESS_STATUS_CODE.OK
-    ) {
+    const response = await this.client.get<IAccountBookAllResponse>("/account_book/all");
+    if (response.status != HTTP_STATUS_CODE.OK || response.data.status != HAPPINESS_STATUS_CODE.OK) {
       console.log("error", response.data);
     }
     console.log("get all account book", response);

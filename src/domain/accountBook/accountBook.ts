@@ -18,13 +18,7 @@ export class AccountBook {
   payments: Payment[];
   categories: Category[];
 
-  constructor(
-    id: number,
-    title: string,
-    startDay: number,
-    payments: Payment[],
-    categories: Category[]
-  ) {
+  constructor(id: number, title: string, startDay: number, payments: Payment[], categories: Category[]) {
     this.id = id;
     this.title = title;
     this.startDay = startDay;

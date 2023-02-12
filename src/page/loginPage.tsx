@@ -5,22 +5,10 @@ import { Buffer } from "buffer";
 
 export const LoginPage = () => {
   const [searchParma, setSearchParam] = useSearchParams();
-  const accessToken = Buffer.from(
-    searchParma.get("access_token") || "",
-    "base64"
-  ).toString();
-  const refreshToken = Buffer.from(
-    searchParma.get("refresh_token") || "",
-    "base64"
-  ).toString();
-  const [storageAccessToken, saveAccessToken] = useLocalStorage(
-    "accessToken",
-    ""
-  );
-  const [storageRefreshToken, saveRefreshToken] = useLocalStorage(
-    "refreshToken",
-    ""
-  );
+  const accessToken = Buffer.from(searchParma.get("access_token") || "", "base64").toString();
+  const refreshToken = Buffer.from(searchParma.get("refresh_token") || "", "base64").toString();
+  const [storageAccessToken, saveAccessToken] = useLocalStorage("accessToken", "");
+  const [storageRefreshToken, saveRefreshToken] = useLocalStorage("refreshToken", "");
   const navigate = useNavigate();
 
   useEffect(() => {

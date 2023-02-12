@@ -8,18 +8,11 @@ interface ISpendingByDayProp {
   daySpendings: Spending[];
 }
 
-export const SpendingsByDay = ({
-  spendDay,
-  daySpendings,
-}: ISpendingByDayProp) => {
+export const SpendingsByDay = ({ spendDay, daySpendings }: ISpendingByDayProp) => {
   return (
     <Container>
-      <DayHeader>{`${spendDay.format("MM월 DD일")} ${
-        KO_DAYS[spendDay.day()]
-      }요일`}</DayHeader>
-      {daySpendings.length == 0
-        ? ""
-        : daySpendings.map((spending) => <Row spending={spending} />)}
+      <DayHeader>{`${spendDay.format("MM월 DD일")} ${KO_DAYS[spendDay.day()]}요일`}</DayHeader>
+      {daySpendings.length == 0 ? "" : daySpendings.map((spending) => <Row spending={spending} />)}
     </Container>
   );
 };

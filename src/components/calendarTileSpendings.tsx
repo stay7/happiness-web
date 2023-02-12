@@ -13,9 +13,7 @@ export const CalendarTileSpendings = ({ spending }: ISpendingRowProps) => {
   return (
     <Container>
       <Dot />
-      <AmountString>
-        {amountFormatter.numberToString(spending.amount)}
-      </AmountString>
+      <AmountString>{amountFormatter.numberToString(spending.amount)}</AmountString>
     </Container>
   );
 };

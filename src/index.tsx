@@ -9,9 +9,7 @@ import firebase from "firebase/compat/app";
 import { getAnalytics } from "firebase/analytics";
 import { getMessaging, getToken } from "firebase/messaging";
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
   <React.StrictMode>
     <RecoilRoot>
@@ -35,8 +33,7 @@ const analytics = getAnalytics(app);
 const messaging = getMessaging(app);
 
 getToken(messaging, {
-  vapidKey:
-    "BAlNt9qZax3kNIgLoLem5KPzjsVUj3dscvGe4q7WRFM7gmU565wbT6Yf1tluWbQrXzjV5rmkGdzm6yfMYGp5Ag0",
+  vapidKey: "BAlNt9qZax3kNIgLoLem5KPzjsVUj3dscvGe4q7WRFM7gmU565wbT6Yf1tluWbQrXzjV5rmkGdzm6yfMYGp5Ag0",
 }).then((value) => console.log(value));
 
 // If you want to start measuring performance in your app, pass a function

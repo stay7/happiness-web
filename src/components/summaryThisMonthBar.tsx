@@ -11,24 +11,15 @@ interface ISummaryProps {
   incomes: Income[];
 }
 
-export const SummaryThisMonthBar = ({
-  budgets,
-  spendings,
-  incomes,
-}: ISummaryProps) => {
+export const SummaryThisMonthBar = ({ budgets, spendings, incomes }: ISummaryProps) => {
   const formatter = AmountForamtter.getInstance();
-  const totalSpendingAmount = spendings.reduce(
-    (partialSum, value) => partialSum + value.amount,
-    0
-  );
+  const totalSpendingAmount = spendings.reduce((partialSum, value) => partialSum + value.amount, 0);
 
   return (
     <Container>
       <Item>
         <Label>남은 금액</Label>
-        <span style={{ fontWeight: "bold" }}>
-          {formatter.numberToString(0)}
-        </span>
+        <span style={{ fontWeight: "bold" }}>{formatter.numberToString(0)}</span>
       </Item>
       <Item>
         <Label>총지출</Label>

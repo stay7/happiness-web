@@ -12,7 +12,6 @@ export const TextButton = ({ content, onClick }: ITextButtonProp) => {
 
 const Button = styled.button`
   display: inline-block;
-  width: 100%;
   height: 36px;
   border: solid 0;
   border-radius: 8px;

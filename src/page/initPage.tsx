@@ -10,18 +10,10 @@ import kakaoLoginButton from "../static/kakao_login_medium_narrow.png";
 import naverLoginButton from "../static/naver_login.png";
 
 const InitPage = () => {
-  const [accessToken, setAccessToken] =
-    useRecoilState<string>(accessTokenState);
-  const [refreshToken, setRefreshToken] =
-    useRecoilState<string>(refreshTokenState);
-  const [storageAccessToken, saveAccessToken] = useLocalStorage(
-    "accessToken",
-    ""
-  );
-  const [storageRefreshToken, saveRefreshToken] = useLocalStorage(
-    "refreshToken",
-    ""
-  );
+  const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState);
+  const [refreshToken, setRefreshToken] = useRecoilState<string>(refreshTokenState);
+  const [storageAccessToken, saveAccessToken] = useLocalStorage("accessToken", "");
+  const [storageRefreshToken, saveRefreshToken] = useLocalStorage("refreshToken", "");
   const navigate = useNavigate();
 
   const KAKAO_AUTH_URL = process.env["REACT_APP_KAKAO_AUTH_URL"];

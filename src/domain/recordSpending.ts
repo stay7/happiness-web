@@ -13,22 +13,8 @@ interface IRecordSpending {
   content: string | undefined;
 }
 
-export const recordSpending = async ({
-  accountBook,
-  date,
-  amount,
-  category,
-  content,
-  payment,
-}: IRecordSpending) => {
-  if (
-    accountBook == null ||
-    amount == undefined ||
-    date == undefined ||
-    payment == undefined ||
-    category == undefined
-  )
-    return;
+export const recordSpending = async ({ accountBook, date, amount, category, content, payment }: IRecordSpending) => {
+  if (accountBook == null || amount == undefined || date == undefined || payment == undefined || category == undefined) return;
 
   if (amount < 0) return;
 

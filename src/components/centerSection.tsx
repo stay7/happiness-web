@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import HomeCalendar from "./homeCalendar";
 import { CalendarStatusBar } from "./calendarStatusBar";
-import { AddSpendingModal } from "./addSpendingModal";
+import { AddSpendingModal } from "./modal/addSpendingModal";
 import { SummaryThisMonthBar } from "./summaryThisMonthBar";
 import { useRecoilValue } from "recoil";
 import { thisMonthSpendingsState } from "../state/spendingState";
@@ -14,11 +14,7 @@ export const CenterSection = () => {
     <Container>
       <AddSpendingModal />
       <CalendarStatusBar />
-      <SummaryThisMonthBar
-        budgets={[]}
-        spendings={thisMonthSpending}
-        incomes={[]}
-      />
+      <SummaryThisMonthBar budgets={[]} spendings={thisMonthSpending} incomes={[]} />
       <HomeCalendar />
     </Container>
   );

@@ -16,10 +16,7 @@ export const SpendingList = ({}: ISpendingListProp) => {
   return (
     <Container>
       {daysInMonth.map((value) => (
-        <SpendingsByDay
-          spendDay={value}
-          daySpendings={spendings.get(value.format("YYYYMMDD")) || []}
-        />
+        <SpendingsByDay spendDay={value} daySpendings={spendings.get(value.format("YYYYMMDD")) || []} />
       ))}
     </Container>
   );

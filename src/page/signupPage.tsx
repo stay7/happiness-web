@@ -8,14 +8,8 @@ import useLocalStorage from "../hooks/useLocalStorage";
 
 export const SignupPage = () => {
   const [searchParam, _] = useSearchParams();
-  const email = Buffer.from(
-    searchParam.get("email") || "",
-    "base64"
-  ).toString();
-  const provider = Buffer.from(
-    searchParam.get("provider") || "",
-    "base64"
-  ).toString();
+  const email = Buffer.from(searchParam.get("email") || "", "base64").toString();
+  const provider = Buffer.from(searchParam.get("provider") || "", "base64").toString();
   const [nickname, setNickname] = useState<string>("");
   const [accessToken, saveAccessToken] = useLocalStorage("accessToken", "");
   const [refreshToken, saveRefreshToken] = useLocalStorage("refreshToken", "");
@@ -32,9 +26,7 @@ export const SignupPage = () => {
           label="닉네임"
           type="text"
           value={nickname}
-          onChange={(
-            event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-          ) => {
+          onChange={(event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
             // @ts-ignore
             setNickname(event.target.value);
           }}

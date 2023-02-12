@@ -10,9 +10,7 @@ const happinessClient = axios.create({
   headers: {
     Accept: "application/json, text/html",
     "Content-Type": "application/json",
-    Authorization: `${localStorage.getItem(
-      STORAGE_KEY_PREFIX + "accessToken"
-    )!}`,
+    Authorization: `${localStorage.getItem(STORAGE_KEY_PREFIX + "accessToken")!}`,
   },
 });
 
@@ -36,23 +34,15 @@ happinessClient.interceptors.response.use(
       error.response.status == HTTP_STATUS_CODE.UNAUTHORIZED &&
       error.response.data.status == HAPPINESS_STATUS_CODE.UNAUTHORIZED
     ) {
-      const storageRefreshToken = localStorage.getItem(
-        STORAGE_KEY_PREFIX + "refreshToken"
-      );
+      const storageRefreshToken = localStorage.getItem(STORAGE_KEY_PREFIX + "refreshToken");
       if (storageRefreshToken) {
-        const response = await pureClient.post<IRefreshResponse>(
-          `${baseUrl}/oauth/refresh`,
-          {
-            refreshToken: storageRefreshToken,
-          }
-        );
+        const response = await pureClient.post<IRefreshResponse>(`${baseUrl}/oauth/refresh`, {
+          refreshToken: storageRefreshToken,
+        });
         const { accessToken, refreshToken } = response.data;
         if (accessToken && refreshToken) {
           localStorage.setItem(STORAGE_KEY_PREFIX + "accessToken", accessToken);
-          localStorage.setItem(
-            STORAGE_KEY_PREFIX + "refreshToken",
-            refreshToken
-          );
+          localStorage.setItem(STORAGE_KEY_PREFIX + "refreshToken", refreshToken);
         }
       }
     } else {

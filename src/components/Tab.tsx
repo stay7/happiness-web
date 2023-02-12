@@ -10,9 +10,7 @@ interface ITabProp {
 
 const TAB_ICONS = [<AiOutlineCalendar />, <BiCategory />] as const;
 export const Tab = ({ index }: ITabProp) => {
-  const [selectedTabIndex, setSelectedTabIndex] = useRecoilState<number>(
-    selectedTabIndexState
-  );
+  const [selectedTabIndex, setSelectedTabIndex] = useRecoilState<number>(selectedTabIndexState);
   const selected = index == selectedTabIndex;
 
   return (

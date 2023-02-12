@@ -17,9 +17,7 @@ export const resetDayState = selector<dayjs.Dayjs>({
   get: ({ get }) => {
     const today = get(todayState);
     const resetDaySetting = get(resetDaySettingState);
-    return today.date() > resetDaySetting
-      ? today.month(today.month() + 1).date(resetDaySetting)
-      : today.date(resetDaySetting);
+    return today.date() > resetDaySetting ? today.month(today.month() + 1).date(resetDaySetting) : today.date(resetDaySetting);
   },
 });
 

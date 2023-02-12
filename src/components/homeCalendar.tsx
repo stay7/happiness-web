@@ -10,8 +10,7 @@ import { allSpendingState } from "../state/spendingState";
 type Props = {};
 
 const HomeCalendar: React.FC<Props> = () => {
-  const [selectedDate, setSelectedDate] =
-    useRecoilState<dayjs.Dayjs>(selectedDateState);
+  const [selectedDate, setSelectedDate] = useRecoilState<dayjs.Dayjs>(selectedDateState);
   const [] = useRecoilValue(allSpendingState);
   const onChangeDateCallback: OnChangeDateCallback = (value) => {
     setSelectedDate(dayjs(value));
@@ -29,11 +28,7 @@ const HomeCalendar: React.FC<Props> = () => {
         formatShortWeekday={(locale, date) => koDays[date.getDay()]}
         tileClassName="main-tile"
         tileContent={({ activeStartDate, date, view }) => (
-          <CalendarTile
-            activeStartDate={activeStartDate}
-            date={date}
-            view={view}
-          />
+          <CalendarTile activeStartDate={activeStartDate} date={date} view={view} />
         )}
         value={selectedDate.toDate()}
       />
