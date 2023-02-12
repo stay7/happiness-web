@@ -1,30 +1,34 @@
-import {AxiosInstance} from "axios";
+import { AxiosInstance } from "axios";
 import happinessClient from "../utils/happinessClient";
-import {AccountBook} from "../domain/accountBook/accountBook";
-import {HTTP_STATUS_CODE} from "../constants/httpStatusCode";
-import {HappinessResponse} from "../utils/CommonTypes";
-import {HAPPINESS_STATUS_CODE} from "../constants/HAPPINESS_STATUS_CODE";
+import { AccountBook } from "../domain/accountBook/accountBook";
+import { HTTP_STATUS_CODE } from "../constants/httpStatusCode";
+import { HappinessResponse } from "../utils/CommonTypes";
+import { HAPPINESS_STATUS_CODE } from "../constants/HAPPINESS_STATUS_CODE";
 
 export class AccountBookStore {
-    client: AxiosInstance;
+  client: AxiosInstance;
 
-    constructor(client: AxiosInstance) {
-        this.client = client
-    }
+  constructor(client: AxiosInstance) {
+    this.client = client;
+  }
 
-    async all(): Promise<IAccountBookAllResponse> {
-        const response = await this.client.get<IAccountBookAllResponse>("/account_book/all")
-        if (response.status != HTTP_STATUS_CODE.OK || response.data.status != HAPPINESS_STATUS_CODE.OK) {
-            console.log('error', response.data)
-        }
-        console.log('get all account book', response)
-        return response.data
+  async all(): Promise<IAccountBookAllResponse> {
+    const response = await this.client.get<IAccountBookAllResponse>(
+      "/account_book/all"
+    );
+    if (
+      response.status != HTTP_STATUS_CODE.OK ||
+      response.data.status != HAPPINESS_STATUS_CODE.OK
+    ) {
+      console.log("error", response.data);
     }
+    console.log("get all account book", response);
+    return response.data;
+  }
 }
 
-
 interface IAccountBookAllResponse extends HappinessResponse {
-    accountBooks: AccountBook[]
+  accountBooks: AccountBook[];
 }
 
 // interface AccountBook {
@@ -53,4 +57,4 @@ interface IAccountBookAllResponse extends HappinessResponse {
 //     isCard: boolean
 // }
 
-export const accountBookStore = new AccountBookStore(happinessClient)
+export const accountBookStore = new AccountBookStore(happinessClient);

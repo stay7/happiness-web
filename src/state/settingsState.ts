@@ -1,6 +1,6 @@
-import {atom} from "recoil";
+import { atom } from "recoil";
 
 export const resetDaySettingState = atom<number>({
-    key: "reset-day-setting-state",
-    default: 25
-})
+  key: "reset-day-setting-state",
+  default: 25,
+});
