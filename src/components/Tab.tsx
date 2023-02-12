@@ -38,8 +38,8 @@ const Container = styled.div<StyleProp>`
   align-items: center;
   padding: 0 10px;
   margin: 2px 0;
-  width: 95%;
-  height: 3%;
+  width: 180px;
+  height: 32px;
   border-radius: 12px;
   background-color: #ffffff;
   ${(props) => props.selected && "opacity: 0.8"}
