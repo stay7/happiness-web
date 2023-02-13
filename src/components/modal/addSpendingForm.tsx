@@ -39,11 +39,27 @@ export const AddSpendingForm = () => {
             setFormContent(e.target.value);
           }}
         />
-        <div>
+        <List>
           {accountBook?.categories.map((value) => (
-            <CategoryContainer>{value.name}</CategoryContainer>
+            <CategoryContainer>
+              <span>{value.name}</span>
+            </CategoryContainer>
           ))}
-        </div>
+        </List>
+      </ExpandContainer>
+    );
+  };
+
+  const ExpandPayment = () => {
+    return (
+      <ExpandContainer>
+        <List>
+          {accountBook?.payments.map((payment) => (
+            <PaymentContainer>
+              <span>{payment.name}</span>
+            </PaymentContainer>
+          ))}
+        </List>
       </ExpandContainer>
     );
   };
@@ -74,7 +90,7 @@ export const AddSpendingForm = () => {
         </div>
       </ExpandableRow>
 
-      <ExpandableRow selected={true} title="수단">
+      <ExpandableRow selected={true} title="수단" expand={<ExpandPayment />}>
         <div>
           <span>지불 수단을 선택해주세요</span>
         </div>
@@ -128,14 +144,31 @@ const ExpandContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 `;
 
-const CategoryContainer = styled.span`
+const CategoryContainer = styled.div`
   display: flex;
   border: 1px solid black;
   width: 40px;
   height: 40px;
-  text-align: center;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+`;
+
+const List = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const PaymentContainer = styled.div`
+  display: flex;
+  border: 1px solid black;
+  width: 70px;
+  height: 40px;
+  border-radius: 7px;
+  justify-content: center;
   align-items: center;
 `;
 
