@@ -16,7 +16,7 @@ export const LoginPage = () => {
     saveAccessToken(accessToken);
     // @ts-ignore
     saveRefreshToken(refreshToken);
-    navigate("/home");
+    navigate("/");
   }, []);
 
   return (
