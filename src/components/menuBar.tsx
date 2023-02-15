@@ -1,9 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import { useRecoilValue } from "recoil";
+import { userState } from "../state/userState";
 
 export function MenuBar() {
+  const user = useRecoilValue(userState);
   return (
     <Container>
+      <Hello>Hello,{user?.nickname}</Hello>
       <Bar>
         <AppName>Hamoney</AppName>
         <div>
@@ -23,7 +27,15 @@ const Container = styled.div`
   width: 100%;
   height: 54px;
   padding: 0 28px;
-  background-color: #fbf7f4;
+  background-color: black;
+`;
+
+const Hello = styled.div`
+  position: absolute;
+  left: 20px;
+  text-align: left;
+  color: #ffffff;
+  opacity: 0.8;
 `;
 
 const Bar = styled.div`
@@ -33,11 +45,11 @@ const Bar = styled.div`
   padding: 0 10px;
   justify-content: space-between;
   box-sizing: border-box;
-  background-color: black;
+  background-color: #cfcfcf;
   border-radius: 100px;
-  min-width: 400px;
+  min-width: 545px;
   height: 32px;
-  color: white;
+  color: black;
 `;
 
 const AppName = styled.span``;
