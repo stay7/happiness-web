@@ -15,7 +15,7 @@ const HomeCalendar: React.FC<Props> = () => {
   const onChangeDateCallback: OnChangeDateCallback = (value) => {
     setSelectedDate(dayjs(value));
   };
-  const koDays = ["일", "월", "화", "수", "목", "금", "토"];
+  const koDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   return (
     <>
@@ -23,9 +23,10 @@ const HomeCalendar: React.FC<Props> = () => {
         className="main-calendar"
         defaultView="month"
         view="month"
+        locale="en-US"
         showNavigation={false}
         onChange={onChangeDateCallback}
-        formatShortWeekday={(locale, date) => koDays[date.getDay()]}
+        formatWeekday={(locale, date) => koDays[date.getDay()]}
         tileClassName="main-tile"
         tileContent={({ activeStartDate, date, view }) => (
           <CalendarTile activeStartDate={activeStartDate} date={date} view={view} />
