@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
-import Layout from "../components/layout";
+import Layout from "../components/layouts/layout";
 import { accountBookStore } from "../store/accountBookStore";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { AccountBook } from "../domain/accountBook/accountBook";

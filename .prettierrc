@@ -1,4 +1,5 @@
 {
   "tabWidth": 2,
-  "printWidth": 130
+  "printWidth": 130,
+  "singleAttributePerLine": true
 }

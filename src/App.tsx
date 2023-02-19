@@ -6,18 +6,33 @@ import HomePage from "./page/homePage";
 import RecordPage from "./page/recordPage";
 import { SignupPage } from "./page/signupPage";
 import { LoginPage } from "./page/loginPage";
-import InitPage from "./page/initPage";
+import EntrancePage from "./page/entrancePage";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/">
-          <Route index element={<HomePage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/init" element={<InitPage />} />
-          <Route path="/record" element={<RecordPage />} />
-          <Route path="/signup" element={<SignupPage />} />
+          <Route
+            index
+            element={<HomePage />}
+          />
+          <Route
+            path="/login"
+            element={<LoginPage />}
+          />
+          <Route
+            path="/entrance"
+            element={<EntrancePage />}
+          />
+          <Route
+            path="/record"
+            element={<RecordPage />}
+          />
+          <Route
+            path="/signup"
+            element={<SignupPage />}
+          />
         </Route>
       </Routes>
     </BrowserRouter>

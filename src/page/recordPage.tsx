@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Layout from "../components/layout";
+import Layout from "../components/layouts/layout";
 import { useRecoilState } from "recoil";
 import dayjs from "dayjs";
 import { Button, TextField } from "@mui/material";
@@ -33,7 +33,12 @@ const RecordPage = () => {
         <div>{`selected: ${selectedDate.toDate()}`}</div>
         <div>
           <div>
-            <TextField label="금액" type="text" onChange={onChangeAmount} value={amount} />
+            <TextField
+              label="금액"
+              type="text"
+              onChange={onChangeAmount}
+              value={amount}
+            />
           </div>
           <div>
             <>지불 수단</>
@@ -43,7 +48,12 @@ const RecordPage = () => {
           </div>
           <div>{/*{payment.isCard && "일시불"}*/}</div>
           <div>
-            <TextField label="카드/현금" type="text" value={payment.name} disabled={true} />
+            <TextField
+              label="카드/현금"
+              type="text"
+              value={payment.name}
+              disabled={true}
+            />
           </div>
           <>카테고리</>
           <div>

@@ -1,5 +1,5 @@
 import React from "react";
-import MenuBar from "./menuBar";
+import MenuBar from "../menuBar";
 import styled from "styled-components";
 
 type Props = {
