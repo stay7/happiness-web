@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useRecoilState } from "recoil";
-import { openRecordModalState, TAB_NAME } from "../state/uiState";
+import { TAB_NAME } from "../state/uiState";
 import { Tab } from "./Tab";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -10,7 +10,6 @@ import dayjs from "dayjs";
 import { Profile } from "./profile/profile";
 
 export const LeftSection = () => {
-  const [_, setOpenModal] = useRecoilState(openRecordModalState);
   const [selectedDate, setSelectedDate] = useRecoilState(selectedDateState);
 
   return (
@@ -32,8 +31,6 @@ export const LeftSection = () => {
           inline
         />
       </Component>
-
-      <Button onClick={() => setOpenModal(true)}>지출 추가</Button>
     </Container>
   );
 };
@@ -55,14 +52,4 @@ const Component = styled.div`
   width: 100%;
   align-items: center;
   padding: 10px 0;
-`;
-
-const Button = styled.button`
-  width: 180px;
-  height: 30px;
-  color: white;
-  border: solid 0;
-  text-align: center;
-  background-color: #335beb;
-  border-radius: 8px;
 `;
