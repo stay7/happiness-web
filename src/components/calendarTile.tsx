@@ -20,9 +20,9 @@ export const CalendarTile = ({ activeStartDate, view, date }: CalendarTileProp) 
   );
 };
 
+// 날짜 숫자 밑 공간
 const Container = styled.div`
-  height: 75px;
-  max-height: 75px;
+  flex: 1;
   padding: 0 7px;
   margin: 0.5px;
 `;

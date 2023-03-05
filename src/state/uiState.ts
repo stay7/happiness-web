@@ -2,7 +2,7 @@ import { atom, selector } from "recoil";
 
 const nf = new Intl.NumberFormat();
 
-export const TAB_NAME = ["CALENDAR", "CATEGORY"] as const;
+export const TAB_NAME = ["달력", "분류"] as const;
 
 export const openRecordModalState = atom<boolean>({
   key: "open-record-modal-state",

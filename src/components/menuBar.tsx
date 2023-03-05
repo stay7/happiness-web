@@ -1,15 +1,29 @@
 import React from "react";
 import styled from "styled-components";
+import { BsPlusCircleFill } from "react-icons/bs";
+import { useRecoilState } from "recoil";
+import { openRecordModalState } from "../state/uiState";
 
 export function MenuBar() {
+  const [_, setOpenModal] = useRecoilState(openRecordModalState);
+
   return (
     <Container>
       <Bar>
         <AppName>Hamoney</AppName>
         <div>
-          <span>수입 75,000</span>
+          <span>수입 00,000</span>
           <span>지출 75,000</span>
         </div>
+        <BsPlusCircleFill
+          style={{ cursor: "pointer" }}
+          size={30}
+          onClick={() => {
+            setOpenModal(true);
+          }}
+        >
+          plus
+        </BsPlusCircleFill>
       </Bar>
     </Container>
   );
@@ -23,7 +37,7 @@ const Container = styled.div`
   width: 100%;
   height: 54px;
   padding: 0 28px;
-  background-color: #fbf7f4;
+  background-color: black;
 `;
 
 const Bar = styled.div`
@@ -33,11 +47,11 @@ const Bar = styled.div`
   padding: 0 10px;
   justify-content: space-between;
   box-sizing: border-box;
-  background-color: black;
+  background-color: #cfcfcf;
   border-radius: 100px;
-  min-width: 400px;
+  min-width: 545px;
   height: 32px;
-  color: white;
+  color: black;
 `;
 
 const AppName = styled.span``;

@@ -32,6 +32,25 @@ export class AuthStore {
       throw e;
     }
   }
+
+  async login(): Promise<ILoginData> {
+    try {
+      const response = await this.client.get("/login");
+      return response.data;
+    } catch (e) {
+      throw e;
+    }
+  }
+}
+
+interface ILoginData {
+  user: ILoginUser;
+}
+
+interface ILoginUser {
+  id: number;
+  email: string;
+  nickname: string;
 }
 
 interface ISignupForm {

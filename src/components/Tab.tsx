@@ -36,9 +36,9 @@ const Container = styled.div<StyleProp>`
   align-items: center;
   padding: 0 10px;
   margin: 2px 0;
-  width: 180px;
+  width: 90%;
   height: 32px;
-  border-radius: 12px;
+  border-radius: 10px;
   background-color: #ffffff;
   ${(props) => props.selected && "opacity: 0.8"}
 `;
