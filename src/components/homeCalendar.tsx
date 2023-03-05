@@ -6,6 +6,7 @@ import { selectedDateState } from "../state/calendarState";
 import { allSpendingState } from "../state/spendingState";
 import { Calendar, dayjsLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
+import "./calendar/calendar.scss";
 
 type Props = {};
 
@@ -19,18 +20,13 @@ const HomeCalendar: React.FC<Props> = () => {
   // @ts-ignore
   return (
     <>
-      {/*<Calendar*/}
-      {/*  localizer={localizer}*/}
-      {/*  defaultDate={new Date()}*/}
-      {/*  events={events}*/}
-      {/*  components={() => {*/}
-      {/*    eventWrapper: {() => <div>event</div>},*/}
-      {/*  }}*/}
-      {/*  startAccessor="start"*/}
-      {/*  endAccessor="end"*/}
-      {/*  style={{ height: 500 }}*/}
-      {/*  views={views}*/}
-      {/*/>*/}
+      <Calendar
+        localizer={localizer}
+        defaultDate={new Date()}
+        startAccessor="start"
+        endAccessor="end"
+        toolbar={false}
+      />
     </>
   );
 };

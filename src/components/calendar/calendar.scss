@@ -1,0 +1,20 @@
+@import 'react-big-calendar/lib/sass/styles';
+
+.rbc-date-cell {
+  text-align: left;
+  font-size: 14px;
+  padding: 6px;
+}
+
+.rbc-month-row {
+  display: inline-table !important;
+  flex: 0 0 0 !important;
+  min-height: 120px !important;
+}
+
+.rbc-header {
+  color: #666666;
+  font-weight: normal;
+  border-left: 0;
+  border-right: 0;
+}
