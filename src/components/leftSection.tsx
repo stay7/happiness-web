@@ -7,6 +7,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { selectedDateState } from "../state/calendarState";
 import dayjs from "dayjs";
+import { Profile } from "./profile/profile";
 
 export const LeftSection = () => {
   const [_, setOpenModal] = useRecoilState(openRecordModalState);
@@ -14,16 +15,25 @@ export const LeftSection = () => {
 
   return (
     <Container>
-      <Button onClick={() => setOpenModal(true)}>지출 추가</Button>
-      <LeftSectionComponent>
+      <Component>
+        <Profile />
+      </Component>
+
+      <Component>
         {TAB_NAME.map((value, index) => (
           <Tab index={index} />
         ))}
-      </LeftSectionComponent>
+      </Component>
 
-      <LeftSectionComponent>
-        <DatePicker selected={selectedDate.toDate()} onChange={(date) => setSelectedDate(dayjs(date))} inline />
-      </LeftSectionComponent>
+      <Component>
+        <DatePicker
+          selected={selectedDate.toDate()}
+          onChange={(date) => setSelectedDate(dayjs(date))}
+          inline
+        />
+      </Component>
+
+      <Button onClick={() => setOpenModal(true)}>지출 추가</Button>
     </Container>
   );
 };
@@ -38,7 +48,7 @@ const Container = styled.div`
   background-color: #e2e2e2;
 `;
 
-const LeftSectionComponent = styled.div`
+const Component = styled.div`
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid #d4d4d4;
