@@ -18,7 +18,7 @@ export const SocialLoginButton = ({ provider }: ISocialLoginProp) => {
 
   return (
     <Container>
-      <a href={redirectUrl(provider)}>
+      <a href={authUrl(provider)}>
         <img
           src={img}
           alt="login button"
@@ -39,7 +39,7 @@ function imgSrc(type: SocialProvider): string {
   }
 }
 
-function redirectUrl(type: SocialProvider) {
+function authUrl(type: SocialProvider) {
   switch (type) {
     case SocialProvider.GOOGLE:
       return process.env["REACT_APP_GOOGLE_AUTH_URL"];

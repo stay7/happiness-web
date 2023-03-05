@@ -15,6 +15,8 @@ import { RightSection } from "../components/rightSection";
 import { selectedDateState } from "../state/calendarState";
 import { CategoryTab } from "../components/tabs/categoryTab";
 import { selectedTabIndexState } from "../state/uiState";
+import authStore from "../store/authStore";
+import { userState } from "../state/userState";
 
 const HomePage = () => {
   const [accountBooks, setAccountBooks] = useRecoilState<AccountBook[]>(accountBooksState);
@@ -24,10 +26,12 @@ const HomePage = () => {
   const selectedDay = useRecoilValue<dayjs.Dayjs>(selectedDateState);
   const [records, setRecords] = useState<Spending[]>();
   const selectedTabIndex = useRecoilValue(selectedTabIndexState);
+  const [user, setUser] = useRecoilState(userState);
 
   // @ts-ignore
   useEffect(() => {
     getAllAccountBooks();
+    callLogin();
   }, []);
 
   useEffect(() => {
@@ -43,13 +47,13 @@ const HomePage = () => {
       <LeftSection />
       {selectTab(selectedTabIndex)}
       <RightSection />
-
-      {/*<div>all</div>*/}
-      {/*{allSpendings.map(value => <div>{value.amount}</div>)}*/}
-      {/*<div>today {selectedDay.format("YYYYMMDD")}</div>*/}
-      {/*{records?.map(value => <div>{value.spendAt} {value.amount}</div>)}*/}
     </Layout>
   );
+
+  async function callLogin() {
+    const { user } = await authStore.login();
+    setUser(user);
+  }
 
   async function getAllAccountBooks() {
     const { accountBooks } = await accountBookStore.all();

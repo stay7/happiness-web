@@ -5,6 +5,7 @@ import { userState } from "../state/userState";
 
 export function MenuBar() {
   const user = useRecoilValue(userState);
+
   return (
     <Container>
       <Hello>Hello,{user?.nickname}</Hello>
