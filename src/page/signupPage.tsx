@@ -59,7 +59,7 @@ export const SignupPage = () => {
         <span>경로</span>
 
         <SignupButton
-          title="하모니 시직하기"
+          title="하모니 시작하기"
           onClick={async () => {
             const { accessToken, refreshToken } = await authStore.signup({
               email: email,

@@ -17,6 +17,7 @@ import { CategoryTab } from "../components/tabs/categoryTab";
 import { selectedTabIndexState } from "../state/uiState";
 import authStore from "../store/authStore";
 import { userState } from "../state/userState";
+import { AddSpendingModal } from "../components/modal/addSpendingModal";
 
 const HomePage = () => {
   const [accountBooks, setAccountBooks] = useRecoilState<AccountBook[]>(accountBooksState);
@@ -44,6 +45,7 @@ const HomePage = () => {
 
   return (
     <Layout>
+      <AddSpendingModal />
       <LeftSection />
       {selectTab(selectedTabIndex)}
       <RightSection />

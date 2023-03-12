@@ -8,16 +8,6 @@ export class AuthStore {
     this.client = client;
   }
 
-  async authorizeKakao(): Promise<string> {
-    try {
-      const response = await this.client.get("/oauth/signup/kakao");
-      console.log(response);
-      return response.data;
-    } catch (e) {
-      throw e;
-    }
-  }
-
   async signup(form: ISignupForm): Promise<ISignupData> {
     const data = {
       nickname: form.nickname,
