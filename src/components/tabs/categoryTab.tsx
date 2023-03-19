@@ -30,7 +30,7 @@ const CategoryView = ({ category }: ICategoryViewProp) => {
       <div>{category.name}</div>
       <div>
         {category.subCategories?.map((value) => (
-          <div>{value.name}</div>
+          <div>*{value.name}</div>
         ))}
       </div>
     </>
