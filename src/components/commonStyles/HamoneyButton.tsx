@@ -34,4 +34,5 @@ export const Container = styled.div<IContainerProps>`
   border-radius: 4px;
   width: ${(props) => props.width || "380px"};
   height: ${(props) => props.height || "50px"};
+  cursor: pointer;
 `;

@@ -1,19 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 import { BsPlusCircleFill } from "react-icons/bs";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { openRecordModalState } from "../state/uiState";
+import { thisMonthSpendingSum } from "../state/spendingState";
 
 export function MenuBar() {
   const [_, setOpenModal] = useRecoilState(openRecordModalState);
+  const spendingSum = useRecoilValue(thisMonthSpendingSum);
 
   return (
     <Container>
       <Bar>
         <AppName>Hamoney</AppName>
         <div>
-          <span>수입 00,000</span>
-          <span>지출 75,000</span>
+          <span>수입 0</span>
+          <span>지출 {spendingSum}</span>
         </div>
         <BsPlusCircleFill
           style={{ cursor: "pointer" }}

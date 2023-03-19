@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { selectedDateState } from "../../state/calendarState";
@@ -11,6 +11,7 @@ import { recordSpending } from "../../domain/recordSpending";
 import DatePicker from "react-datepicker";
 import dayjs from "dayjs";
 import { ExpandableRow } from "../expandableRow";
+import { useFocus } from "../../hooks/useFocus";
 
 export const AddSpendingForm = () => {
   const accountBook = useRecoilValue(selectedAccountBookState);
@@ -24,10 +25,13 @@ export const AddSpendingForm = () => {
   const [isOpen, setModalOpen] = useRecoilState(openRecordModalState);
   const onlyNumberRegex = /[^\d]+/g;
   const formDateRef = React.useRef(null);
-  const formAmountRef = React.useRef(null);
   const formPaymentRef = React.useRef(null);
 
-  const ExpandAmount = () => {
+  const [amountRef, setAmountInputFocus] = useFocus();
+  const [expandAmount, setExpandAmount] = useState(false);
+  const [expandPayment, setExpandPayment] = useState(false);
+
+  const ExpendedAmount = () => {
     return (
       <ExpandContainer>
         <div>무엇에 쓴 금액인가요?</div>
@@ -36,13 +40,17 @@ export const AddSpendingForm = () => {
           value={formContent}
           placeholder="내용입력"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            console.log(e.target.value);
             setFormContent(e.target.value);
           }}
         />
         <List>
-          {accountBook?.categories.map((value) => (
-            <CategoryContainer>
-              <span>{value.name}</span>
+          {accountBook?.categories.map((category) => (
+            <CategoryContainer
+              key={category.id}
+              onClick={() => setFormCategory(category)}
+            >
+              <span>{category.name}</span>
             </CategoryContainer>
           ))}
         </List>
@@ -55,7 +63,10 @@ export const AddSpendingForm = () => {
       <ExpandContainer>
         <List>
           {accountBook?.payments.map((payment) => (
-            <PaymentContainer>
+            <PaymentContainer
+              key={payment.id}
+              onClick={() => setFormPayment(payment)}
+            >
               <span>{payment.name}</span>
             </PaymentContainer>
           ))}
@@ -69,16 +80,26 @@ export const AddSpendingForm = () => {
       <ExpandableRow
         selected={true}
         title="날짜"
-        expand={<DatePicker selected={selectedDate.toDate()} onChange={(date) => setSelectedDate(dayjs(date))} inline />}
+        expand={
+          <DatePicker
+            selected={selectedDate.toDate()}
+            onChange={(date) => setSelectedDate(dayjs(date))}
+            inline
+          />
+        }
       >
         <span>{selectedDate.format("YYYYMMMDD")}</span>
       </ExpandableRow>
 
-      <ExpandableRow selected={true} title="금액" expand={<ExpandAmount />}>
+      <ExpandableRow
+        selected={document.activeElement === amountRef.current}
+        title="금액"
+        expand={<ExpendedAmount />}
+      >
         <div>
           <Input
             type="text"
-            ref={formAmountRef}
+            ref={amountRef}
             value={amountString}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               const filtered = e.target.value.replaceAll(onlyNumberRegex, "");
@@ -90,7 +111,11 @@ export const AddSpendingForm = () => {
         </div>
       </ExpandableRow>
 
-      <ExpandableRow selected={true} title="수단" expand={<ExpandPayment />}>
+      <ExpandableRow
+        selected={true}
+        title="수단"
+        expand={<ExpandPayment />}
+      >
         <div>
           <span>지불 수단을 선택해주세요</span>
         </div>
@@ -170,6 +195,7 @@ const PaymentContainer = styled.div`
   border-radius: 7px;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 
 const ButtonsContainer = styled.div`

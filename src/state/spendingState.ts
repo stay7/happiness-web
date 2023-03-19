@@ -34,6 +34,7 @@ export const selectedDaySpendingsState = selector<Spending[]>({
   },
 });
 
+// 이번달 SpendingList
 export const thisMonthSpendingsState = selector<Spending[]>({
   key: "this-month-spendings-state",
   get: ({ get }) => {
@@ -42,6 +43,7 @@ export const thisMonthSpendingsState = selector<Spending[]>({
   },
 });
 
+// 이번달 Pair<day to Spending[]>
 export const thisMonthSpendingsByDayState = selector<Map<string, Spending[]>>({
   key: "this-month-spendings-by-day-state",
   get: ({ get }) => {
@@ -56,5 +58,12 @@ export const thisMonthSpendingsByDayState = selector<Map<string, Spending[]>>({
       }
     });
     return map;
+  },
+});
+
+export const thisMonthSpendingSum = selector<number>({
+  key: "this-month-spendings-sum",
+  get: ({ get }) => {
+    return get(thisMonthSpendingsState).reduce((acc, cur) => acc + cur.amount, 0);
   },
 });

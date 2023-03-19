@@ -12,9 +12,12 @@ export const CenterSection = () => {
 
   return (
     <Container>
-      <AddSpendingModal />
       <CalendarStatusBar />
-      <SummaryThisMonthBar budgets={[]} spendings={thisMonthSpending} incomes={[]} />
+      <SummaryThisMonthBar
+        budgets={[]}
+        spendings={thisMonthSpending}
+        incomes={[]}
+      />
       <HomeCalendar />
     </Container>
   );
