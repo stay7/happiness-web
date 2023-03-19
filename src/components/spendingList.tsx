@@ -11,12 +11,13 @@ export const SpendingList = ({}: ISpendingListProp) => {
   const daysInMonth = allDaysInMonth(useRecoilValue(selectedDateState));
   const spendings = useRecoilValue(thisMonthSpendingsByDayState);
 
-  console.log(daysInMonth.map((value) => value.format("YYYYMMDD")));
-
   return (
     <Container>
       {daysInMonth.map((value) => (
-        <SpendingsByDay spendDay={value} daySpendings={spendings.get(value.format("YYYYMMDD")) || []} />
+        <SpendingsByDay
+          spendDay={value}
+          daySpendings={spendings.get(value.format("YYYYMMDD")) || []}
+        />
       ))}
     </Container>
   );
